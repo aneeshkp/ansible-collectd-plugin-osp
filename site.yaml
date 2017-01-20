@@ -4,11 +4,11 @@
   hosts: controllers  
   remote_user: heat-admin
   roles:
-    - install-dashboard
+    - install-collectd-plugin
 
 - name: install collectd plugin
   hosts: compute  
   remote_user: heat-admin
   roles:
-    - install-dashboard
+    - install-collectd-plugin
 

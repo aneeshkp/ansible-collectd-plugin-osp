@@ -1,0 +1,3 @@
+---
+- include: install-plugin.yaml
+- include: config.yaml
