@@ -1,0 +1,59 @@
+---
+
+- name: install git 
+  action: "{{ ansible_pkg_mgr }} name={{ item }} state=present"
+  with_items:
+   - git
+  become: true
+
+- name: install pip
+  shell: >
+    easy_install pip
+  become: true
+
+- name: clean  of any old collectd-ceilometer-plugin code
+  file: name={{ansible_env.HOME}}/{{project_dir}} state=absent force=yes
+  become: true
+
+- name: clone collectd-ceilometer-plugin code
+  git: repo={{ collectd_base_repo }} accept_hostkey=yes version={{ collectd_branch }} dest={{ansible_env.HOME}}/{{project_dir}}
+
+- name: clean /var/log/collectd  directory
+  stat: path=/var/log/collectd
+  register: log_path
+  become: true
+
+
+- file: path=/var/log/collectd state=absent
+  when: log_path.stat.isdir is defined and log_path.stat.isdir == true
+  become: true
+
+- name: clean /etc/collectd.d  directory
+  stat: path=/etc/collectd.d
+  register: etc_path
+  become: true
+
+- debug: var=etc_path
+
+- file: path=/etc/collectd.d state=absent
+  when: etc_path.stat.isdir is defined and etc_path.stat.isdir == true
+  become: true
+
+
+
+- name: make /etc/collectd.d directory
+  file: path=/etc/collectd state=directory mode=0644 owner=root group=root
+  become: true
+
+- name: run install
+  shell: >
+   cd {{ansible_env.HOME}}/{{project_dir}};
+   pip install -r requirments.txt;
+   python setup.py install
+  become: true
+
+- name: install git 
+  action: "{{ ansible_pkg_mgr }} name={{ item }} state=present"
+  with_items:
+   - collectd
+  become: true

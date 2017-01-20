@@ -1,0 +1,7 @@
+collectd_base_repo: http://github.com/openstack/collectd-ceilometer-plugin
+project_dir: collectd-ceilometer-plugin
+{{collectd-ceilometer-plugin_module_path}}:{{ansible_env.HOME}}/{{project_dir}}
+
+collectd_branch: stable/newton
+
+overcloudrc: ~/overcloudrc
