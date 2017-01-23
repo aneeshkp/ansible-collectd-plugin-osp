@@ -33,6 +33,11 @@
   when: log_path.stat.isdir is defined and log_path.stat.isdir == true
   become: true
 
+- name: make /var/log/collectd directory
+  file: path=/var/log/collectd state=directory mode=0644 owner=root group=root
+  become: true
+
+
 - name: clean /etc/collectd.d  directory
   stat: path=/etc/collectd.d
   register: etc_path
