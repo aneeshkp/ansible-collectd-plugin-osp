@@ -47,7 +47,7 @@
 
 
 - name: make /etc/collectd.d directory
-  file: path=/etc/collectd state=directory mode=0644 owner=root group=root
+  file: path=/etc/collectd.d state=directory mode=0644 owner=root group=root
   become: true
 
 - name: run install
