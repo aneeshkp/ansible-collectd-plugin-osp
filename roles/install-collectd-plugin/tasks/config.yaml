@@ -23,6 +23,6 @@
   template: src=collectd-ceilometer-plugin.conf.j2 dest=/etc/collectd.d/collectd-ceilometer-plugin.conf mode=0644 seuser=unconfined_u force=yes
   become: true
 
-- name: Copy conf files
-  template: src=collectd-gnocchi-plugin.conf.j2 dest=/etc/collectd.d/collectd-gnocchi-plugin.conf mode=0644 seuser=unconfined_u force=yes
-  become: true
+#- name: Copy conf files
+#  template: src=collectd-gnocchi-plugin.conf.j2 dest=/etc/collectd.d/collectd-gnocchi-plugin.conf mode=0644 seuser=unconfined_u force=yes
+#  become: true
