@@ -6,5 +6,7 @@ collectd_branch: stable/newton
 
 overcloudrc: ~/overcloudrc
 
+haproxy_config: /etc/haproxy/haproxy.cfg
+
 # epel7 rpm for collectd packages
 epel7_rpm: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
