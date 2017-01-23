@@ -11,6 +11,13 @@
   register: ceilometer_password  
   become: true
 
+- name : get ceilometer password
+  shell : >
+    grep -m1 "password=" /etc/gnocchi/gnocchi.conf | awk {'print $1'} | cut -d "=" -f 2
+  register: gnocchi_password  
+  become: true
+
+
 
 - name: Copy conf files
   template: src=collectd-ceilometer-plugin.conf.j2 dest=/etc/collectd.d/collectd-ceilometer-plugin.conf mode=0644 seuser=unconfined_u force=yes

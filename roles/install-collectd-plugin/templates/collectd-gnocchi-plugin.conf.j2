@@ -27,7 +27,7 @@
 
         # # Ceilometer user creds
         OS_USERNAME "gnocchi"
-        OS_PASSWORD "password"
+        OS_PASSWORD "{{gnocchi_password.stdout}}"
         OS_TENANT_NAME "service"
 
     </Module>
