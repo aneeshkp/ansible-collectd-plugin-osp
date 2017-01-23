@@ -1,7 +1,10 @@
 collectd_base_repo: http://github.com/openstack/collectd-ceilometer-plugin
 project_dir: collectd-ceilometer-plugin
-{{collectd-ceilometer-plugin_module_path}}:{{ansible_env.HOME}}/{{project_dir}}
+collectd-ceilometer-plugin_module_path: "{{ansible_env.HOME}}/{{project_dir}}"
 
 collectd_branch: stable/newton
 
 overcloudrc: ~/overcloudrc
+
+# epel7 rpm for collectd packages
+epel7_rpm: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
