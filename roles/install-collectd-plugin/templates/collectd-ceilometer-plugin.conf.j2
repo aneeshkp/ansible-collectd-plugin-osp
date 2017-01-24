@@ -21,7 +21,7 @@
         OS_AUTH_URL "http://{{haproxy_ip_address.stdout}}:5000/v2.0"
 
         # Ceilometer address
-        CEILOMETER_URL_TYPE "http://{{haproxy_ip_address.stdout}}:8777"
+        CEILOMETER_URL_TYPE "internalURL"
 
         # Ceilometer timeout in ms
         CEILOMETER_TIMEOUT "1000"
@@ -31,7 +31,5 @@
         OS_PASSWORD "{{ceilometer_password.stdout}}"
         OS_TENANT_NAME "service"
 
-      <UNITS>
-      </UNITS>
     </Module>
 </Plugin>
